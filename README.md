@@ -20,22 +20,18 @@ Desarrollar estrategias para abordar desigualdades de género en interpretación
 
 1. **🎼 Música del Siglo XX**
    - Coordinadora: Isabel Jiménez
-   - Estudiantes: 2 participantes
    - Actividades: Análisis histórico, estudio de casos, materiales sobre compositoras
 
 2. **🎭 Antropología y Folklore**
    - Coordinadora: Mª Jesús Pena
-   - Estudiantes: 3 participantes
    - Actividades: Investigación etnográfica, análisis comparativo, documentación
 
 3. **🎨 Música e Imagen**
    - Coordinadora: Judith Helvia García
-   - Estudiantes: 3 participantes
    - Actividades: Corpus iconográfico, análisis visual, exposición
 
 4. **📺 Música y Medios**
    - Coordinadora: María Palacios
-   - Estudiantes: 2 participantes
    - Actividades: Monitoreo mediático, análisis discursivo, guías de buenas prácticas
 
 ### 💬 Debates Formativos
