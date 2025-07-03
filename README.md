@@ -2,7 +2,7 @@
 
 ## 📋 Descripción del Proyecto
 
-Este proyecto de **Aprendizaje-Servicio** de la Universidad de Salamanca (2025-26) desarrolla estrategias para abordar desigualdades de género en interpretación musical y prevenir violencia de género en conservatorios.
+Este proyecto de **Aprendizaje-Servicio** de la Universidad de Salamanca (2025-26) desarrolla estrategias para abordar desigualdades de género en interpretación musical y prevenir violencia de género en conservatorios. https://aprendizajeservicio.github.io/interpretacionmusical/
 
 ### 🎯 Objetivo Principal
 Desarrollar estrategias para abordar desigualdades de género en interpretación musical y prevenir violencia de género en conservatorios.
