@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Interpretación Musical y Prevención Violencia de Género</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #2D1B69 0%, #9B59B6 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-20px) rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .objective {
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .objective:hover {
+            transform: translateY(-5px);
+        }
+
+        .objective h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #8B5CF6, #EC4899);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #2D1B69;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .card.expanded .card-content {
+            max-height: 500px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .card li:before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #8B5CF6;
+            font-size: 0.8em;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #8B5CF6, #EC4899);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: 100%;
+            border-left-color: white;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: 100%;
+            border-right-color: white;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #8B5CF6, #EC4899);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .expand-btn {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .expand-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin-left: 40px;
+            }
+            
+            .timeline-content::before {
+                left: -20px !important;
+                right: auto !important;
+                border-left-color: white !important;
+                border-right-color: transparent !important;
+            }
+            
+            .timeline-marker {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header fade-in">
+            <h1>🎵 Interpretación Musical y Prevención de Violencia de Género</h1>
+            <p class="subtitle">Proyecto de Aprendizaje-Servicio • Universidad de Salamanca • Curso 2025-26</p>
+        </header>
+
+        <div class="objective pulse">
+            <h2><span class="icon">🎯</span>OBJETIVO PRINCIPAL</h2>
+            <p>Desarrollar estrategias para abordar desigualdades de género en interpretación musical y prevenir violencia de género en conservatorios</p>
+        </div>
+
+
+        <h2 style="text-align: center; color: #2D1B69; margin: 40px 0 30px 0; font-size: 2em;">📚 ACTIVIDADES POR ASIGNATURA</h2>
+        
+        <div class="grid">
+            <div class="card fade-in" onclick="toggleCard(this)">
+                <h3><span class="icon">🎼</span>Música del Siglo XX</h3>
+                <p><strong>Coordinadora:</strong> Isabel Jiménez</p>
+                <button class="expand-btn">Ver detalles</button>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>Análisis histórico:</strong> Presencia de mujeres en diferentes instrumentos</li>
+                        <li><strong>Estudio de caso:</strong> Comparativa instrumentos masculinizados vs feminizados</li>
+                        <li><strong>Intervención:</strong> Materiales sobre compositoras/intérpretes relevantes</li>
+                        <li><strong>Estudiantes:</strong> 2 participantes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card fade-in" onclick="toggleCard(this)">
+                <h3><span class="icon">🎭</span>Antropología y Folklore</h3>
+                <p><strong>Coordinadora:</strong> Mª Jesús Pena</p>
+                <button class="expand-btn">Ver detalles</button>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>Investigación etnográfica:</strong> Entrevistas multigeneracionales</li>
+                        <li><strong>Análisis comparativo:</strong> Distribución por género en instrumentos tradicionales</li>
+                        <li><strong>Documentación:</strong> Archivo de experiencias de discriminación</li>
+                        <li><strong>Estudiantes:</strong> 3 participantes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card fade-in" onclick="toggleCard(this)">
+                <h3><span class="icon">🎨</span>Música e Imagen</h3>
+                <p><strong>Coordinadora:</strong> Judith Helvia García</p>
+                <button class="expand-btn">Ver detalles</button>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>Corpus iconográfico:</strong> Representaciones visuales por género</li>
+                        <li><strong>Análisis visual:</strong> Identificación de estereotipos en imágenes</li>
+                        <li><strong>Exposición:</strong> Evolución de representaciones de género</li>
+                        <li><strong>Estudiantes:</strong> 3 participantes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card fade-in" onclick="toggleCard(this)">
+                <h3><span class="icon">📺</span>Música y Medios</h3>
+                <p><strong>Coordinadora:</strong> María Palacios</p>
+                <button class="expand-btn">Ver detalles</button>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>Monitoreo mediático:</strong> Análisis representación en medios</li>
+                        <li><strong>Análisis discursivo:</strong> Lenguaje según género del intérprete</li>
+                        <li><strong>Guía de buenas prácticas:</strong> Para comunicadores especializados</li>
+                        <li><strong>Estudiantes:</strong> 2 participantes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; color: #2D1B69; margin: 40px 0 30px 0; font-size: 2em;">💬 DEBATES FORMATIVOS</h2>
+        
+        <div class="grid">
+            <div class="card fade-in" onclick="toggleCard(this)">
+                <h3><span class="icon">⚖️</span>Debate 1: Relaciones de Poder</h3>
+                <p><strong>Tema:</strong> Enseñanza musical individualizada</p>
+                <button class="expand-btn">Ver detalles</button>
+                <div class="card-content">
+                    <ul>
+                        <li>Dinámicas de poder en el aula</li>
+                        <li>Límites interpersonales</li>
+                        <li>Respeto en el proceso enseñanza-aprendizaje</li>
+                        <li><strong>Dirigido a:</strong> Profesorado y estudiantes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card fade-in" onclick="toggleCard(this)">
+                <h3><span class="icon">🎪</span>Debate 2: Estereotipos de Género</h3>
+                <p><strong>Tema:</strong> Interpretación musical</p>
+                <button class="expand-btn">Ver detalles</button>
+                <div class="card-content">
+                    <ul>
+                        <li>Construcción histórica de estereotipos</li>
+                        <li>Impacto en trayectorias formativas</li>
+                        <li>Estrategias para la diversificación</li>
+                        <li><strong>Dirigido a:</strong> Orientadores, profesorado, familias</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card fade-in" onclick="toggleCard(this)">
+                <h3><span class="icon">🛡️</span>Debate 3: Protocolos de Actuación</h3>
+                <p><strong>Tema:</strong> Acoso y discriminación</p>
+                <button class="expand-btn">Ver detalles</button>
+                <div class="card-content">
+                    <ul>
+                        <li>Marco normativo aplicable</li>
+                        <li>Canales de denuncia</li>
+                        <li>Acompañamiento a víctimas</li>
+                        <li><strong>Dirigido a:</strong> Equipos directivos y representantes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card fade-in" onclick="toggleCard(this)">
+                <h3><span class="icon">🏠</span>Debate 4: Espacios Seguros</h3>
+                <p><strong>Tema:</strong> Formación musical</p>
+                <button class="expand-btn">Ver detalles</button>
+                <div class="card-content">
+                    <ul>
+                        <li>Características de espacios seguros</li>
+                        <li>Estrategias preventivas</li>
+                        <li>Relaciones equitativas</li>
+                        <li><strong>Dirigido a:</strong> Toda la comunidad educativa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; color: #2D1B69; margin: 40px 0 30px 0; font-size: 2em;">📅 CRONOGRAMA</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>🚀 FASE 1: PLANIFICACIÓN</h3>
+                    <p><strong>Octubre - Noviembre 2025</strong></p>
+                    <ul>
+                        <li>Constitución comité tripartito</li>
+                        <li>Formación metodológica</li>
+                        <li>Diseño herramientas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>🔬 FASE 2: INVESTIGACIÓN</h3>
+                    <p><strong>Diciembre 2025 - Febrero 2026</strong></p>
+                    <ul>
+                        <li>Debates formativos 1 y 2</li>
+                        <li>Recopilación de datos</li>
+                        <li>Seminarios conjuntos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>📝 FASE 3: PRODUCCIÓN</h3>
+                    <p><strong>Marzo - Abril 2026</strong></p>
+                    <ul>
+                        <li>Debates formativos 3 y 4</li>
+                        <li>Elaboración materiales</li>
+                        <li>Implementación piloto</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>📢 FASE 4: DIFUSIÓN</h3>
+                    <p><strong>Mayo - Junio 2026</strong></p>
+                    <ul>
+                        <li>Jornadas de presentación</li>
+                        <li>Compilación materiales</li>
+                        <li>Informe final</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="objective" style="margin-top: 50px;">
+            <h2><span class="icon">🤝</span>COORDINACIÓN INSTITUCIONAL</h2>
+            <p><strong>Comité Tripartito:</strong> Universidad de Salamanca • ADAVAS • Conservatorio Superior de Música (COSCYL)</p>
+        </div>
+
+        <div class="logos-container" style="text-align: center; margin: 40px 0; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
+                <img src="LOGOS/Logo-USAL.jpg" alt="Universidad de Salamanca" style="height: 80px; object-fit: contain;">
+                <img src="LOGOS/Logo_ADAVAS.png" alt="ADAVAS" style="height: 80px; object-fit: contain;">
+                <img src="LOGOS/Logo COSCYL.jpeg" alt="COSCYL" style="height: 80px; object-fit: contain;">
+                <img src="LOGOS/APRENDIZAJE-150x150.png" alt="Aprendizaje y Servicio" style="height: 80px; object-fit: contain;">
+            </div>
+        </div>
+
+        <div class="project-info" style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #2D1B69 0%, #9B59B6 100%); color: white; border-radius: 15px;">
+            <p style="font-size: 1.1em; margin: 0;">Proyecto de Aprendizaje y Servicio, Universidad de Salamanca, Número 25-26/33</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard(card) {
+            const allCards = document.querySelectorAll('.card');
+            allCards.forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('expanded');
+                    const btn = c.querySelector('.expand-btn');
+                    if (btn) btn.textContent = 'Ver detalles';
+                }
+            });
+            
+            card.classList.toggle('expanded');
+            const btn = card.querySelector('.expand-btn');
+            if (btn) {
+                btn.textContent = card.classList.contains('expanded') ? 'Ocultar detalles' : 'Ver detalles';
+            }
+        }
+
+        // Animaciones de aparición
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Efecto parallax suave en el header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
