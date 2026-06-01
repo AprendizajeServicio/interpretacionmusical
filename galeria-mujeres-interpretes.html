@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería: Mujeres Intérpretes | Interpretación Musical USAL</title>
+    <title>Exposición: Mujeres Intérpretes | Interpretación Musical USAL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -19,549 +19,887 @@
             --color-border: #E8E4DE;
             --font-display: 'Playfair Display', Georgia, serif;
             --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-            --shadow-sm: 0 2px 8px rgba(123, 30, 58, 0.06);
-            --shadow-md: 0 4px 20px rgba(123, 30, 58, 0.08);
-            --shadow-lg: 0 8px 40px rgba(123, 30, 58, 0.18);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 8px rgba(123,30,58,0.06);
+            --shadow-md: 0 4px 20px rgba(123,30,58,0.10);
+            --shadow-lg: 0 12px 48px rgba(123,30,58,0.18);
+            --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
         body {
             font-family: var(--font-body);
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--color-text);
-            background-color: var(--color-warm-white);
-            -webkit-font-smoothing: antialiased;
+            font-size:17px; line-height:1.7;
+            color:var(--color-text);
+            background:var(--color-warm-white);
+            -webkit-font-smoothing:antialiased;
         }
 
-        /* === Top bar === */
+        /* Top bar */
         .top-bar {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            padding: 10px 40px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
+            padding: 11px 40px;
+            display: flex; align-items: center; justify-content: space-between;
         }
         .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: var(--transition);
+            display:inline-flex; align-items:center; gap:8px;
+            color:rgba(255,255,255,0.9); text-decoration:none;
+            font-size:14px; font-weight:500; transition:var(--transition);
         }
-        .back-link:hover { color: #fff; gap: 12px; }
+        .back-link:hover { color:#fff; gap:12px; }
+        .top-bar-ig {
+            display:inline-flex; align-items:center; gap:8px;
+            color:rgba(255,255,255,0.8); text-decoration:none;
+            font-size:13px; font-weight:500; transition:var(--transition);
+        }
+        .top-bar-ig:hover { color:#fff; }
 
-        /* === Header === */
+        /* Page header */
         .page-header {
-            background: linear-gradient(165deg, var(--color-cream) 0%, var(--color-warm-white) 60%, #F5F0F2 100%);
-            padding: 64px 40px 56px;
+            background: linear-gradient(165deg, var(--color-cream) 0%, var(--color-warm-white) 55%, #F2EBF0 100%);
+            padding: 72px 40px 60px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
             border-bottom: 1px solid var(--color-border);
         }
         .page-header::before {
-            content: '';
-            position: absolute;
-            top: -150px; right: -150px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(107,76,122,0.07) 0%, transparent 70%);
-            border-radius: 50%;
+            content:'';
+            position:absolute; top:-180px; right:-180px;
+            width:500px; height:500px;
+            background:radial-gradient(circle, rgba(107,76,122,0.07) 0%, transparent 70%);
+            border-radius:50%;
         }
         .header-tag {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--color-secondary);
-            margin-bottom: 16px;
+            display:inline-block; font-size:12px; font-weight:600;
+            text-transform:uppercase; letter-spacing:2px;
+            color:var(--color-secondary); margin-bottom:16px;
         }
         .page-header h1 {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 52px);
-            font-weight: 700;
-            color: var(--color-primary);
-            line-height: 1.2;
-            margin-bottom: 16px;
+            font-family:var(--font-display);
+            font-size:clamp(34px,4.5vw,56px);
+            font-weight:700; color:var(--color-primary);
+            line-height:1.15; margin-bottom:18px;
         }
-        .page-header h1 em { color: var(--color-secondary); font-style: italic; }
-        .page-header p {
-            color: var(--color-text-light);
-            font-size: 18px;
-            max-width: 560px;
-            margin: 0 auto;
+        .page-header h1 em { color:var(--color-secondary); font-style:italic; }
+        .page-header p { color:var(--color-text-light); font-size:18px; max-width:580px; margin:0 auto 28px; }
+        .header-stats {
+            display:inline-flex; align-items:center; gap:24px;
+            background:white; border:1px solid var(--color-border);
+            border-radius:50px; padding:10px 28px;
+            font-size:14px; font-weight:600; color:var(--color-text-light);
+            box-shadow:var(--shadow-sm);
+        }
+        .stat-dot {
+            width:6px; height:6px; border-radius:50%;
+            background:var(--color-secondary); display:inline-block;
         }
 
-        /* === Gallery === */
-        .gallery-section {
-            padding: 72px 40px 96px;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* Section layout */
+        .section { padding:80px 40px; }
+        .section-alt { background:var(--color-cream); }
+        .section-label {
+            max-width:1100px; margin:0 auto 44px;
+            font-size:12px; font-weight:600;
+            text-transform:uppercase; letter-spacing:2.5px;
+            color:var(--color-secondary);
+            display:flex; align-items:center; gap:14px;
+        }
+        .section-label::after {
+            content:''; flex:1; height:1px; background:var(--color-border);
+        }
+
+        /* === EXPOSITION PIECES === */
+        .exhibits-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+            gap:40px;
+        }
+        .exhibit-card {
+            background:white; border-radius:20px;
+            border:1px solid var(--color-border);
+            box-shadow:var(--shadow-sm);
+            overflow:hidden;
+            transition:var(--transition);
+            display:flex; flex-direction:column;
+        }
+        .exhibit-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:transparent; }
+
+        .exhibit-inner {
+            display:grid; grid-template-columns:1fr 1fr;
+            flex:1;
+        }
+
+        /* Reel side */
+        .reel-side {
+            position:relative; overflow:hidden;
+            min-height:300px;
+        }
+        .reel-side img {
+            width:100%; height:100%;
+            object-fit:cover; object-position:top;
+            display:block;
+            transition:transform 0.5s ease;
+        }
+        .exhibit-card:hover .reel-side img { transform:scale(1.04); }
+        .reel-side a { display:block; height:100%; }
+
+        /* Reel placeholder (while no image) */
+        .reel-placeholder {
+            width:100%; height:100%; min-height:300px;
+            background: linear-gradient(160deg, #2E0A18 0%, #1A0A24 50%, #0D0510 100%);
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            padding:32px 24px; gap:12px;
+            text-align:center; cursor:pointer;
+            text-decoration:none;
+            transition:var(--transition);
+            position:relative;
+        }
+        .reel-placeholder::before {
+            content:'';
+            position:absolute; inset:0;
+            background:radial-gradient(ellipse at 50% 30%, rgba(123,30,58,0.25) 0%, transparent 70%);
+        }
+        .reel-placeholder:hover { filter:brightness(1.15); }
+        .placeholder-name {
+            font-family:var(--font-display);
+            font-size:clamp(16px,2vw,22px);
+            font-weight:700; color:rgba(255,255,255,0.95);
+            line-height:1.2; position:relative; z-index:1;
+        }
+        .placeholder-years {
+            font-size:13px; color:rgba(255,255,255,0.45);
+            font-weight:400; letter-spacing:1px;
+            position:relative; z-index:1;
+        }
+        .placeholder-role {
+            font-size:11px; font-weight:600;
+            text-transform:uppercase; letter-spacing:2px;
+            color:rgba(255,255,255,0.55);
+            position:relative; z-index:1;
+        }
+        .ig-badge {
+            margin-top:16px; display:inline-flex; align-items:center; gap:7px;
+            background:rgba(255,255,255,0.1);
+            border:1px solid rgba(255,255,255,0.2);
+            color:rgba(255,255,255,0.8);
+            padding:7px 14px; border-radius:50px;
+            font-size:12px; font-weight:600;
+            position:relative; z-index:1;
+            transition:var(--transition);
+        }
+        .reel-placeholder:hover .ig-badge {
+            background:rgba(255,255,255,0.18);
+            color:white;
+        }
+
+        /* Cartela side */
+        .cartela-side {
+            position:relative; overflow:hidden; cursor:pointer;
+            background:var(--color-cream);
+        }
+        .cartela-side img {
+            width:100%; height:100%;
+            object-fit:contain; object-position:top center;
+            display:block;
+            transition:transform 0.4s ease;
+        }
+        .exhibit-card:hover .cartela-side img { transform:scale(1.02); }
+        .cartela-side .zoom-hint {
+            position:absolute; bottom:10px; right:10px;
+            background:rgba(91,22,41,0.75);
+            color:white; border-radius:6px;
+            padding:5px 9px; font-size:11px; font-weight:600;
+            opacity:0; transition:var(--transition);
+            display:flex; align-items:center; gap:4px;
+        }
+        .exhibit-card:hover .cartela-side .zoom-hint { opacity:1; }
+
+        /* Exhibit footer */
+        .exhibit-footer {
+            padding:14px 20px;
+            border-top:1px solid var(--color-border);
+            display:flex; align-items:center; justify-content:space-between;
+            background:white;
+        }
+        .exhibit-artist {
+            font-family:var(--font-display);
+            font-size:15px; font-weight:600;
+            color:var(--color-primary); line-height:1.2;
+        }
+        .exhibit-role {
+            font-size:12px; color:var(--color-secondary);
+            font-weight:500; margin-top:2px;
+        }
+        .exhibit-num {
+            font-size:12px; font-weight:600;
+            color:var(--color-border);
+            font-variant-numeric:tabular-nums;
+        }
+
+        /* === PHOTOS SECTION === */
+        .photos-grid {
+            max-width:1100px; margin:0 auto;
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+            gap:18px;
+        }
+        .photo-card {
+            border-radius:14px; overflow:hidden;
+            box-shadow:var(--shadow-sm); border:1px solid var(--color-border);
+            aspect-ratio:4/3; cursor:pointer;
+            position:relative; background:var(--color-cream);
+            transition:var(--transition);
+        }
+        .photo-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:transparent; }
+        .photo-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
+        .photo-card:hover img { transform:scale(1.05); }
+        .photo-overlay {
+            position:absolute; inset:0;
+            background:linear-gradient(to top, rgba(91,22,41,0.6) 0%, transparent 50%);
+            opacity:0; transition:var(--transition);
+            display:flex; align-items:flex-end; padding:14px;
+        }
+        .photo-card:hover .photo-overlay { opacity:1; }
+        .photo-overlay span {
+            color:white; font-size:12px; font-weight:600;
+            display:flex; align-items:center; gap:5px;
         }
 
         /* Cartel destacado */
-        .featured-item {
-            margin-bottom: 56px;
+        .poster-card {
+            max-width:340px;
+            border-radius:20px; overflow:hidden;
+            box-shadow:var(--shadow-md); border:1px solid var(--color-border);
+            cursor:pointer; transition:var(--transition); position:relative;
         }
-        .featured-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--color-secondary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .featured-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--color-border);
-        }
-        .featured-card {
-            cursor: pointer;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--color-border);
-            transition: var(--transition);
-            max-width: 480px;
-            position: relative;
-        }
-        .featured-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-        .featured-card img {
-            width: 100%;
-            display: block;
-        }
-        .featured-card .img-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(91,22,41,0.7) 0%, transparent 50%);
-            display: flex;
-            align-items: flex-end;
-            padding: 24px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        .featured-card:hover .img-overlay { opacity: 1; }
-        .img-overlay span {
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .poster-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+        .poster-card img { width:100%; display:block; }
+        .poster-card .photo-overlay { display:flex; }
 
-        /* Grid fotos */
-        .grid-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--color-secondary);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .grid-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--color-border);
-        }
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .photo-item {
-            cursor: pointer;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-            transition: var(--transition);
-            aspect-ratio: 4/3;
-            position: relative;
-            background: var(--color-cream);
-        }
-        .photo-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        .photo-item:hover img { transform: scale(1.04); }
-        .photo-item .img-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(91,22,41,0.65) 0%, transparent 55%);
-            display: flex;
-            align-items: flex-end;
-            padding: 16px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        .photo-item:hover .img-overlay { opacity: 1; }
-
-        /* === Lightbox === */
+        /* === LIGHTBOX === */
         .lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            display: none;
-            align-items: center;
-            justify-content: center;
+            position:fixed; inset:0; z-index:9999;
+            display:none; align-items:center; justify-content:center;
         }
-        .lightbox.active { display: flex; }
-        .lightbox-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(15, 8, 12, 0.92);
-            backdrop-filter: blur(8px);
+        .lightbox.active { display:flex; }
+        .lb-backdrop {
+            position:absolute; inset:0;
+            background:rgba(10,4,8,0.94);
+            backdrop-filter:blur(10px);
         }
-        .lightbox-container {
-            position: relative;
-            z-index: 1;
-            max-width: 92vw;
-            max-height: 92vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
+        .lb-wrap {
+            position:relative; z-index:1;
+            display:flex; flex-direction:column; align-items:center; gap:14px;
+            max-width:94vw;
         }
-        .lightbox-img-wrap {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+        .lb-img-box {
+            border-radius:14px; overflow:hidden;
+            box-shadow:0 24px 80px rgba(0,0,0,0.7);
         }
-        .lightbox-img-wrap img {
-            display: block;
-            max-width: 88vw;
-            max-height: 78vh;
-            object-fit: contain;
+        .lb-img-box img {
+            display:block;
+            max-width:88vw; max-height:80vh;
+            object-fit:contain;
+            transition:opacity 0.15s ease;
         }
-        .lightbox-close {
-            position: fixed;
-            top: 20px;
-            right: 24px;
-            z-index: 1001;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 20px;
-            transition: var(--transition);
-            backdrop-filter: blur(4px);
+        .lb-close {
+            position:fixed; top:18px; right:22px; z-index:1;
+            background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+            color:white; width:44px; height:44px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; transition:var(--transition);
+            backdrop-filter:blur(4px);
         }
-        .lightbox-close:hover { background: rgba(255,255,255,0.25); transform: scale(1.1); }
-        .lightbox-nav {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1001;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            backdrop-filter: blur(4px);
+        .lb-close:hover { background:rgba(255,255,255,0.22); transform:scale(1.1); }
+        .lb-nav {
+            position:fixed; top:50%; transform:translateY(-50%); z-index:1;
+            background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+            color:white; width:50px; height:50px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; transition:var(--transition); backdrop-filter:blur(4px);
         }
-        .lightbox-nav:hover { background: rgba(255,255,255,0.25); transform: translateY(-50%) scale(1.1); }
-        .lightbox-prev { left: 20px; }
-        .lightbox-next { right: 20px; }
-        .lightbox-counter {
-            color: rgba(255,255,255,0.7);
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 1px;
+        .lb-nav:hover { background:rgba(255,255,255,0.22); }
+        .lb-prev { left:18px; }
+        .lb-next { right:18px; }
+        .lb-nav:hover.lb-prev { transform:translateY(-50%) translateX(-2px); }
+        .lb-nav:hover.lb-next { transform:translateY(-50%) translateX(2px); }
+        .lb-info {
+            text-align:center;
         }
-        .lightbox-dots {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
+        .lb-title {
+            font-family:var(--font-display);
+            font-size:18px; font-weight:600;
+            color:white; margin-bottom:4px;
         }
-        .lightbox-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
+        .lb-subtitle { font-size:13px; color:rgba(255,255,255,0.55); }
+        .lb-dots {
+            display:flex; gap:7px; justify-content:center; margin-top:4px;
         }
-        .lightbox-dot.active { background: white; transform: scale(1.3); }
+        .lb-dot {
+            width:7px; height:7px; border-radius:50%;
+            background:rgba(255,255,255,0.25);
+            cursor:pointer; transition:var(--transition); border:none;
+        }
+        .lb-dot.active { background:white; transform:scale(1.4); }
 
-        /* === Footer === */
+        /* Footer */
         .page-footer {
-            background: var(--color-text);
-            color: rgba(255,255,255,0.65);
-            text-align: center;
-            padding: 28px 40px;
-            font-size: 14px;
+            background:var(--color-text); color:rgba(255,255,255,0.6);
+            padding:28px 40px; text-align:center; font-size:14px;
         }
-        .page-footer a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-        }
-        .page-footer a:hover { color: white; }
+        .page-footer a { color:rgba(255,255,255,0.85); text-decoration:none; }
+        .page-footer a:hover { color:white; }
 
-        /* === Responsive === */
-        @media (max-width: 768px) {
-            .top-bar { padding: 10px 20px; }
-            .page-header { padding: 48px 24px 40px; }
-            .gallery-section { padding: 48px 20px 72px; }
-            .photo-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-            .lightbox-nav { display: none; }
+        /* Responsive */
+        @media(max-width:900px) {
+            .exhibits-grid { grid-template-columns:1fr; }
         }
-        @media (prefers-reduced-motion: reduce) {
-            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        @media(max-width:680px) {
+            .exhibit-inner { grid-template-columns:1fr; }
+            .reel-placeholder, .reel-side { min-height:220px; }
+            .top-bar { padding:10px 18px; }
+            .page-header { padding:48px 20px 40px; }
+            .section { padding:56px 20px; }
+            .photos-grid { grid-template-columns:repeat(2,1fr); }
+            .lb-nav { display:none; }
+        }
+        @media(prefers-reduced-motion:reduce) {
+            * { animation-duration:0.01ms!important; transition-duration:0.01ms!important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top bar -->
-    <div class="top-bar">
-        <a href="https://aprendizajeservicio.github.io/interpretacionmusical/" class="back-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-            Volver a Interpretación Musical
-        </a>
+<!-- Top bar -->
+<div class="top-bar">
+    <a href="https://aprendizajeservicio.github.io/interpretacionmusical/" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        Volver al proyecto
+    </a>
+    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="top-bar-ig">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @mujeres.sinescrupulos
+    </a>
+</div>
+
+<!-- Header -->
+<div class="page-header">
+    <span class="header-tag">Música del Siglo XX · Grado en Musicología · USAL</span>
+    <h1>Exposición: <em>Mujeres Intérpretes</em></h1>
+    <p>Catorce historias de mujeres músicas del siglo XX, recuperadas por el alumnado de 4.º curso como parte del Proyecto ApS 25-26/33</p>
+    <div class="header-stats">
+        <span><span class="stat-dot"></span>&nbsp; 14 intérpretes</span>
+        <span><span class="stat-dot"></span>&nbsp; Siglos XIX–XX</span>
+        <span><span class="stat-dot"></span>&nbsp; 8 especialidades</span>
     </div>
+</div>
 
-    <!-- Header -->
-    <div class="page-header">
-        <span class="header-tag">Música del Siglo XX · Grado en Musicología</span>
-        <h1>Mujeres <em>Intérpretes</em></h1>
-        <p>Exposición visual sobre la presencia y trayectoria de las mujeres en la interpretación musical</p>
-    </div>
+<!-- Exposición: 14 piezas -->
+<section class="section">
+    <div class="section-label">Las piezas de la exposición</div>
+    <div class="exhibits-grid" id="exhibits-grid">
 
-    <!-- Gallery -->
-    <div class="gallery-section">
-
-        <!-- Cartel destacado -->
-        <div class="featured-item">
-            <div class="featured-label">Cartel de la exposición</div>
-            <div class="featured-card" onclick="openLightbox(0)" role="button" tabindex="0" aria-label="Ver cartel de la exposición en grande">
-                <img src="img/cartel_mujeres_interpretes.jpg" alt="Cartel: Mujeres Intérpretes" loading="lazy">
-                <div class="img-overlay">
-                    <span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                        Ampliar imagen
-                    </span>
+        <!-- 01 María Barrientos -->
+        <div class="exhibit-card" data-index="0">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de María Barrientos en Instagram">
+                        <span class="placeholder-role">Soprano</span>
+                        <span class="placeholder-name">María Barrientos</span>
+                        <span class="placeholder-years">1883–1946</span>
+                        <span class="ig-badge">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            Ver reel
+                        </span>
+                    </a>
                 </div>
+                <div class="cartela-side" onclick="openLb(0)" tabindex="0" role="button" aria-label="Ver cartela de María Barrientos">
+                    <img src="img/cartelas/cartela-01.jpg" alt="Cartela: María Barrientos" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">María Barrientos</div><div class="exhibit-role">Soprano</div></div>
+                <span class="exhibit-num">01</span>
             </div>
         </div>
 
-        <!-- Galería de fotos -->
-        <div class="grid-label">Fotografías del evento</div>
-        <div class="photo-grid">
-            <div class="photo-item" onclick="openLightbox(1)" role="button" tabindex="0" aria-label="Ver fotografía 1 en grande">
-                <img src="img/DSC_0900.JPG" alt="Mujeres intérpretes – fotografía 1" loading="lazy">
-                <div class="img-overlay">
-                    <span style="color:white;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        Ampliar
-                    </span>
+        <!-- 02 Memphis Minnie -->
+        <div class="exhibit-card" data-index="1">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Memphis Minnie en Instagram">
+                        <span class="placeholder-role">Guitarrista y Compositora de Blues</span>
+                        <span class="placeholder-name">Memphis Minnie</span>
+                        <span class="placeholder-years">1897–1973</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(1)" tabindex="0" role="button" aria-label="Ver cartela de Memphis Minnie">
+                    <img src="img/cartelas/cartela-02.jpg" alt="Cartela: Memphis Minnie" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
             </div>
-            <div class="photo-item" onclick="openLightbox(2)" role="button" tabindex="0" aria-label="Ver fotografía 2 en grande">
-                <img src="img/DSC_0901.JPG" alt="Mujeres intérpretes – fotografía 2" loading="lazy">
-                <div class="img-overlay">
-                    <span style="color:white;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        Ampliar
-                    </span>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Memphis Minnie</div><div class="exhibit-role">Guitarrista y Compositora de Blues</div></div>
+                <span class="exhibit-num">02</span>
+            </div>
+        </div>
+
+        <!-- 03 Clara Haskil -->
+        <div class="exhibit-card" data-index="2">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Clara Haskil en Instagram">
+                        <span class="placeholder-role">Pianista</span>
+                        <span class="placeholder-name">Clara Haskil</span>
+                        <span class="placeholder-years">1895–1960</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(2)" tabindex="0" role="button" aria-label="Ver cartela de Clara Haskil">
+                    <img src="img/cartelas/cartela-03.jpg" alt="Cartela: Clara Haskil" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
             </div>
-            <div class="photo-item" onclick="openLightbox(3)" role="button" tabindex="0" aria-label="Ver fotografía 3 en grande">
-                <img src="img/DSC_0903.JPG" alt="Mujeres intérpretes – fotografía 3" loading="lazy">
-                <div class="img-overlay">
-                    <span style="color:white;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        Ampliar
-                    </span>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Clara Haskil</div><div class="exhibit-role">Pianista</div></div>
+                <span class="exhibit-num">03</span>
+            </div>
+        </div>
+
+        <!-- 04 Pastora Imperio -->
+        <div class="exhibit-card" data-index="3">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Pastora Imperio en Instagram">
+                        <span class="placeholder-role">Bailaora</span>
+                        <span class="placeholder-name">Pastora Imperio</span>
+                        <span class="placeholder-years">ca. 1889–1979</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(3)" tabindex="0" role="button" aria-label="Ver cartela de Pastora Imperio">
+                    <img src="img/cartelas/cartela-04.jpg" alt="Cartela: Pastora Imperio" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
             </div>
-            <div class="photo-item" onclick="openLightbox(4)" role="button" tabindex="0" aria-label="Ver fotografía 4 en grande">
-                <img src="img/DSC_0904.JPG" alt="Mujeres intérpretes – fotografía 4" loading="lazy">
-                <div class="img-overlay">
-                    <span style="color:white;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        Ampliar
-                    </span>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Pastora Imperio</div><div class="exhibit-role">Bailaora</div></div>
+                <span class="exhibit-num">04</span>
+            </div>
+        </div>
+
+        <!-- 05 Alma Rosé -->
+        <div class="exhibit-card" data-index="4">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Alma Rosé en Instagram">
+                        <span class="placeholder-role">Violinista</span>
+                        <span class="placeholder-name">Alma Rosé</span>
+                        <span class="placeholder-years">1906–1944</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(4)" tabindex="0" role="button" aria-label="Ver cartela de Alma Rosé">
+                    <img src="img/cartelas/cartela-05.jpg" alt="Cartela: Alma Rosé" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
             </div>
-            <div class="photo-item" onclick="openLightbox(5)" role="button" tabindex="0" aria-label="Ver fotografía 5 en grande">
-                <img src="img/DSC_0907.JPG" alt="Mujeres intérpretes – fotografía 5" loading="lazy">
-                <div class="img-overlay">
-                    <span style="color:white;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        Ampliar
-                    </span>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Alma Rosé</div><div class="exhibit-role">Violinista</div></div>
+                <span class="exhibit-num">05</span>
+            </div>
+        </div>
+
+        <!-- 06 Kirsten Flagstad -->
+        <div class="exhibit-card" data-index="5">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Kirsten Flagstad en Instagram">
+                        <span class="placeholder-role">Soprano</span>
+                        <span class="placeholder-name">Kirsten Flagstad</span>
+                        <span class="placeholder-years">1895–1962</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(5)" tabindex="0" role="button" aria-label="Ver cartela de Kirsten Flagstad">
+                    <img src="img/cartelas/cartela-06.jpg" alt="Cartela: Kirsten Flagstad" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Kirsten Flagstad</div><div class="exhibit-role">Soprano</div></div>
+                <span class="exhibit-num">06</span>
+            </div>
+        </div>
+
+        <!-- 07 Adelina Patti -->
+        <div class="exhibit-card" data-index="6">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Adelina Patti en Instagram">
+                        <span class="placeholder-role">Soprano</span>
+                        <span class="placeholder-name">Adelina Patti</span>
+                        <span class="placeholder-years">1843–1919</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(6)" tabindex="0" role="button" aria-label="Ver cartela de Adelina Patti">
+                    <img src="img/cartelas/cartela-07.jpg" alt="Cartela: Adelina Patti" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Adelina Patti</div><div class="exhibit-role">Soprano</div></div>
+                <span class="exhibit-num">07</span>
+            </div>
+        </div>
+
+        <!-- 08 Lily Pons -->
+        <div class="exhibit-card" data-index="7">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Lily Pons en Instagram">
+                        <span class="placeholder-role">Soprano</span>
+                        <span class="placeholder-name">Lily Pons</span>
+                        <span class="placeholder-years">1898–1976</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(7)" tabindex="0" role="button" aria-label="Ver cartela de Lily Pons">
+                    <img src="img/cartelas/cartela-08.jpg" alt="Cartela: Lily Pons" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Lily Pons</div><div class="exhibit-role">Soprano</div></div>
+                <span class="exhibit-num">08</span>
+            </div>
+        </div>
+
+        <!-- 09 Cécile Chaminade -->
+        <div class="exhibit-card" data-index="8">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Cécile Chaminade en Instagram">
+                        <span class="placeholder-role">Compositora y Pianista</span>
+                        <span class="placeholder-name">Cécile Chaminade</span>
+                        <span class="placeholder-years">1857–1944</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(8)" tabindex="0" role="button" aria-label="Ver cartela de Cécile Chaminade">
+                    <img src="img/cartelas/cartela-09.jpg" alt="Cartela: Cécile Chaminade" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Cécile Chaminade</div><div class="exhibit-role">Compositora y Pianista</div></div>
+                <span class="exhibit-num">09</span>
+            </div>
+        </div>
+
+        <!-- 10 Elvira de Hidalgo -->
+        <div class="exhibit-card" data-index="9">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Elvira de Hidalgo en Instagram">
+                        <span class="placeholder-role">Soprano y Pedagoga</span>
+                        <span class="placeholder-name">Elvira de Hidalgo</span>
+                        <span class="placeholder-years">1891–1980</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(9)" tabindex="0" role="button" aria-label="Ver cartela de Elvira de Hidalgo">
+                    <img src="img/cartelas/cartela-10.jpg" alt="Cartela: Elvira de Hidalgo" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Elvira de Hidalgo</div><div class="exhibit-role">Soprano y Pedagoga</div></div>
+                <span class="exhibit-num">10</span>
+            </div>
+        </div>
+
+        <!-- 11 Marian Anderson -->
+        <div class="exhibit-card" data-index="10">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Marian Anderson en Instagram">
+                        <span class="placeholder-role">Contralto</span>
+                        <span class="placeholder-name">Marian Anderson</span>
+                        <span class="placeholder-years">1897–1993</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(10)" tabindex="0" role="button" aria-label="Ver cartela de Marian Anderson">
+                    <img src="img/cartelas/cartela-11.jpg" alt="Cartela: Marian Anderson" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Marian Anderson</div><div class="exhibit-role">Contralto</div></div>
+                <span class="exhibit-num">11</span>
+            </div>
+        </div>
+
+        <!-- 12 La Argentinita -->
+        <div class="exhibit-card" data-index="11">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de La Argentinita en Instagram">
+                        <span class="placeholder-role">Bailaora, Cantante y Empresaria</span>
+                        <span class="placeholder-name">La Argentinita</span>
+                        <span class="placeholder-years">1895–1945</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(11)" tabindex="0" role="button" aria-label="Ver cartela de La Argentinita">
+                    <img src="img/cartelas/cartela-12.jpg" alt="Cartela: La Argentinita" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">La Argentinita</div><div class="exhibit-role">Bailaora, Cantante y Empresaria</div></div>
+                <span class="exhibit-num">12</span>
+            </div>
+        </div>
+
+        <!-- 13 Nadia Boulanger -->
+        <div class="exhibit-card" data-index="12">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Nadia Boulanger en Instagram">
+                        <span class="placeholder-role">Compositora, Pianista, Directora y Pedagoga</span>
+                        <span class="placeholder-name">Nadia Boulanger</span>
+                        <span class="placeholder-years">1887–1979</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(12)" tabindex="0" role="button" aria-label="Ver cartela de Nadia Boulanger">
+                    <img src="img/cartelas/cartela-13.jpg" alt="Cartela: Nadia Boulanger" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Nadia Boulanger</div><div class="exhibit-role">Compositora, Pianista, Directora y Pedagoga</div></div>
+                <span class="exhibit-num">13</span>
+            </div>
+        </div>
+
+        <!-- 14 Ofelia Nieto -->
+        <div class="exhibit-card" data-index="13">
+            <div class="exhibit-inner">
+                <div class="reel-side">
+                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener" class="reel-placeholder" aria-label="Ver reel de Ofelia Nieto en Instagram">
+                        <span class="placeholder-role">Soprano</span>
+                        <span class="placeholder-name">Ofelia Nieto</span>
+                        <span class="placeholder-years">1898–1931</span>
+                        <span class="ig-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Ver reel</span>
+                    </a>
+                </div>
+                <div class="cartela-side" onclick="openLb(13)" tabindex="0" role="button" aria-label="Ver cartela de Ofelia Nieto">
+                    <img src="img/cartelas/cartela-14.jpg" alt="Cartela: Ofelia Nieto" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
+                </div>
+            </div>
+            <div class="exhibit-footer">
+                <div><div class="exhibit-artist">Ofelia Nieto</div><div class="exhibit-role">Soprano</div></div>
+                <span class="exhibit-num">14</span>
+            </div>
+        </div>
+
+    </div><!-- /exhibits-grid -->
+</section>
+
+<!-- Fotografías del evento -->
+<section class="section section-alt">
+    <div class="section-label">Cartel y fotografías del evento</div>
+    <div style="max-width:1100px;margin:0 auto;">
+        <div style="margin-bottom:32px;">
+            <div class="poster-card" onclick="openPhotoLb(0)">
+                <img src="img/cartel_mujeres_interpretes.jpg" alt="Cartel de la exposición" loading="lazy">
+                <div class="photo-overlay" style="display:flex;">
+                    <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ver cartel</span>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imagen">
-        <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
-        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <button class="lightbox-nav lightbox-prev" onclick="navigate(-1)" aria-label="Imagen anterior">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-        </button>
-        <button class="lightbox-nav lightbox-next" onclick="navigate(1)" aria-label="Imagen siguiente">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-        </button>
-        <div class="lightbox-container">
-            <div class="lightbox-img-wrap">
-                <img id="lightbox-img" src="" alt="">
-            </div>
-            <div class="lightbox-counter" id="lightbox-counter"></div>
-            <div class="lightbox-dots" id="lightbox-dots"></div>
+        <div class="photos-grid">
+            <div class="photo-card" onclick="openPhotoLb(1)"><img src="img/DSC_0900.JPG" alt="Fotografía del evento 1" loading="lazy"><div class="photo-overlay"><span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</span></div></div>
+            <div class="photo-card" onclick="openPhotoLb(2)"><img src="img/DSC_0901.JPG" alt="Fotografía del evento 2" loading="lazy"><div class="photo-overlay"><span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</span></div></div>
+            <div class="photo-card" onclick="openPhotoLb(3)"><img src="img/DSC_0903.JPG" alt="Fotografía del evento 3" loading="lazy"><div class="photo-overlay"><span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</span></div></div>
+            <div class="photo-card" onclick="openPhotoLb(4)"><img src="img/DSC_0904.JPG" alt="Fotografía del evento 4" loading="lazy"><div class="photo-overlay"><span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</span></div></div>
+            <div class="photo-card" onclick="openPhotoLb(5)"><img src="img/DSC_0907.JPG" alt="Fotografía del evento 5" loading="lazy"><div class="photo-overlay"><span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</span></div></div>
         </div>
     </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="page-footer">
-        <p>Proyecto ApS 25-26/33 · Universidad de Salamanca ·
-        <a href="https://aprendizajeservicio.github.io/interpretacionmusical/">Interpretación Musical y Prevención de Violencia de Género</a></p>
-    </footer>
+<!-- Lightbox cartelas -->
+<div class="lightbox" id="lb-cartelas">
+    <div class="lb-backdrop" onclick="closeLb('lb-cartelas')"></div>
+    <button class="lb-close" onclick="closeLb('lb-cartelas')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <button class="lb-nav lb-prev" onclick="navLb('lb-cartelas',-1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="lb-nav lb-next" onclick="navLb('lb-cartelas',1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <div class="lb-wrap">
+        <div class="lb-img-box"><img id="lb-cartelas-img" src="" alt=""></div>
+        <div class="lb-info">
+            <div class="lb-title" id="lb-cartelas-title"></div>
+            <div class="lb-subtitle" id="lb-cartelas-sub"></div>
+        </div>
+        <div class="lb-dots" id="lb-cartelas-dots"></div>
+    </div>
+</div>
 
-    <script>
-        const images = [
-            { src: 'img/cartel_mujeres_interpretes.jpg', alt: 'Cartel de la exposición' },
-            { src: 'img/DSC_0900.JPG', alt: 'Fotografía 1' },
-            { src: 'img/DSC_0901.JPG', alt: 'Fotografía 2' },
-            { src: 'img/DSC_0903.JPG', alt: 'Fotografía 3' },
-            { src: 'img/DSC_0904.JPG', alt: 'Fotografía 4' },
-            { src: 'img/DSC_0907.JPG', alt: 'Fotografía 5' }
-        ];
+<!-- Lightbox fotos -->
+<div class="lightbox" id="lb-photos">
+    <div class="lb-backdrop" onclick="closeLb('lb-photos')"></div>
+    <button class="lb-close" onclick="closeLb('lb-photos')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <button class="lb-nav lb-prev" onclick="navLb('lb-photos',-1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="lb-nav lb-next" onclick="navLb('lb-photos',1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <div class="lb-wrap">
+        <div class="lb-img-box"><img id="lb-photos-img" src="" alt=""></div>
+        <div class="lb-dots" id="lb-photos-dots"></div>
+    </div>
+</div>
 
-        let current = 0;
+<!-- Footer -->
+<footer class="page-footer">
+    <p>Proyecto ApS 25-26/33 · Universidad de Salamanca ·
+    <a href="https://aprendizajeservicio.github.io/interpretacionmusical/">Interpretación Musical y Prevención de Violencia de Género</a></p>
+</footer>
 
-        function buildDots() {
-            const dotsEl = document.getElementById('lightbox-dots');
-            dotsEl.innerHTML = '';
-            images.forEach((_, i) => {
-                const btn = document.createElement('button');
-                btn.className = 'lightbox-dot' + (i === current ? ' active' : '');
-                btn.setAttribute('aria-label', 'Ir a imagen ' + (i + 1));
-                btn.onclick = () => goTo(i);
-                dotsEl.appendChild(btn);
-            });
+<script>
+const cartelasData = [
+    { src:'img/cartelas/cartela-01.jpg', name:'María Barrientos', role:'Soprano' },
+    { src:'img/cartelas/cartela-02.jpg', name:'Memphis Minnie', role:'Guitarrista y Compositora de Blues' },
+    { src:'img/cartelas/cartela-03.jpg', name:'Clara Haskil', role:'Pianista' },
+    { src:'img/cartelas/cartela-04.jpg', name:'Pastora Imperio', role:'Bailaora' },
+    { src:'img/cartelas/cartela-05.jpg', name:'Alma Rosé', role:'Violinista' },
+    { src:'img/cartelas/cartela-06.jpg', name:'Kirsten Flagstad', role:'Soprano' },
+    { src:'img/cartelas/cartela-07.jpg', name:'Adelina Patti', role:'Soprano' },
+    { src:'img/cartelas/cartela-08.jpg', name:'Lily Pons', role:'Soprano' },
+    { src:'img/cartelas/cartela-09.jpg', name:'Cécile Chaminade', role:'Compositora y Pianista' },
+    { src:'img/cartelas/cartela-10.jpg', name:'Elvira de Hidalgo', role:'Soprano y Pedagoga' },
+    { src:'img/cartelas/cartela-11.jpg', name:'Marian Anderson', role:'Contralto' },
+    { src:'img/cartelas/cartela-12.jpg', name:'La Argentinita', role:'Bailaora, Cantante y Empresaria' },
+    { src:'img/cartelas/cartela-13.jpg', name:'Nadia Boulanger', role:'Compositora, Pianista, Directora y Pedagoga' },
+    { src:'img/cartelas/cartela-14.jpg', name:'Ofelia Nieto', role:'Soprano' }
+];
+const photosData = [
+    { src:'img/cartel_mujeres_interpretes.jpg', alt:'Cartel de la exposición' },
+    { src:'img/DSC_0900.JPG', alt:'Fotografía del evento' },
+    { src:'img/DSC_0901.JPG', alt:'Fotografía del evento' },
+    { src:'img/DSC_0903.JPG', alt:'Fotografía del evento' },
+    { src:'img/DSC_0904.JPG', alt:'Fotografía del evento' },
+    { src:'img/DSC_0907.JPG', alt:'Fotografía del evento' }
+];
+
+let lbState = { 'lb-cartelas': 0, 'lb-photos': 0 };
+
+function buildDots(id, data, current) {
+    const el = document.getElementById(id + '-dots');
+    if (!el) return;
+    el.innerHTML = '';
+    data.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'lb-dot' + (i === current ? ' active' : '');
+        b.onclick = () => goToLb(id, i);
+        el.appendChild(b);
+    });
+}
+
+function updateLb(id) {
+    const data = id === 'lb-cartelas' ? cartelasData : photosData;
+    const cur = lbState[id];
+    const img = document.getElementById(id + '-img');
+    img.style.opacity = '0';
+    setTimeout(() => {
+        img.src = data[cur].src;
+        img.alt = data[cur].alt || data[cur].name || '';
+        img.style.opacity = '1';
+        const titleEl = document.getElementById(id + '-title');
+        const subEl = document.getElementById(id + '-sub');
+        if (titleEl) titleEl.textContent = data[cur].name || '';
+        if (subEl) subEl.textContent = data[cur].role || '';
+    }, 120);
+    buildDots(id, data, cur);
+}
+
+function openLb(index) {
+    lbState['lb-cartelas'] = index;
+    document.getElementById('lb-cartelas').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    updateLb('lb-cartelas');
+}
+function openPhotoLb(index) {
+    lbState['lb-photos'] = index;
+    document.getElementById('lb-photos').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    updateLb('lb-photos');
+}
+function closeLb(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+}
+function navLb(id, dir) {
+    const data = id === 'lb-cartelas' ? cartelasData : photosData;
+    lbState[id] = (lbState[id] + dir + data.length) % data.length;
+    updateLb(id);
+}
+function goToLb(id, index) {
+    lbState[id] = index;
+    updateLb(id);
+}
+
+['lb-cartelas-img','lb-photos-img'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.transition = 'opacity 0.15s ease';
+});
+
+document.addEventListener('keydown', e => {
+    const activeId = document.getElementById('lb-cartelas').classList.contains('active') ? 'lb-cartelas'
+        : document.getElementById('lb-photos').classList.contains('active') ? 'lb-photos' : null;
+    if (!activeId) return;
+    if (e.key === 'Escape') closeLb(activeId);
+    if (e.key === 'ArrowLeft') navLb(activeId, -1);
+    if (e.key === 'ArrowRight') navLb(activeId, 1);
+});
+
+// Swipe
+['lb-cartelas','lb-photos'].forEach(id => {
+    let tx = 0;
+    const el = document.getElementById(id);
+    el.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive:true });
+    el.addEventListener('touchend', e => {
+        const diff = tx - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) navLb(id, diff > 0 ? 1 : -1);
+    }, { passive:true });
+});
+
+// Keyboard: cartela-side elements
+document.querySelectorAll('.cartela-side').forEach((el, i) => {
+    el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(i); }
+    });
+});
+
+// Fade-in on scroll
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0)';
         }
-
-        function updateLightbox() {
-            const img = document.getElementById('lightbox-img');
-            img.style.opacity = '0';
-            setTimeout(() => {
-                img.src = images[current].src;
-                img.alt = images[current].alt;
-                img.style.opacity = '1';
-            }, 120);
-            document.getElementById('lightbox-counter').textContent = (current + 1) + ' / ' + images.length;
-            buildDots();
-        }
-
-        function openLightbox(index) {
-            current = index;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            updateLightbox();
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function navigate(dir) {
-            current = (current + dir + images.length) % images.length;
-            updateLightbox();
-        }
-
-        function goTo(index) {
-            current = index;
-            updateLightbox();
-        }
-
-        document.getElementById('lightbox-img').style.transition = 'opacity 0.15s ease';
-
-        document.addEventListener('keydown', e => {
-            if (!document.getElementById('lightbox').classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') navigate(-1);
-            if (e.key === 'ArrowRight') navigate(1);
-        });
-
-        // Swipe support
-        let touchStartX = 0;
-        document.getElementById('lightbox').addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-        }, { passive: true });
-        document.getElementById('lightbox').addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
-        }, { passive: true });
-
-        // Keyboard for grid items
-        document.querySelectorAll('[role="button"]').forEach((el, i) => {
-            el.addEventListener('keydown', e => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
-            });
-        });
-
-        // Fade-in on scroll
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.photo-item, .featured-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(16px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease';
-            observer.observe(el);
-        });
-    </script>
+    });
+}, { threshold: 0.08 });
+document.querySelectorAll('.exhibit-card, .photo-card, .poster-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity 0.5s ease ${(i % 4) * 0.07}s, transform 0.5s ease ${(i % 4) * 0.07}s, box-shadow 0.3s ease`;
+    obs.observe(el);
+});
+</script>
 </body>
 </html>
