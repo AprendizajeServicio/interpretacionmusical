@@ -132,7 +132,7 @@
         /* Reel side */
         .reel-side {
             position:relative; overflow:hidden;
-            min-height:300px;
+            min-height:300px; cursor:pointer;
         }
         .reel-side img {
             width:100%; height:100%;
@@ -141,7 +141,15 @@
             transition:transform 0.5s ease;
         }
         .exhibit-card:hover .reel-side img { transform:scale(1.04); }
-        .reel-side a { display:block; height:100%; }
+        .reel-side .zoom-hint {
+            position:absolute; bottom:10px; right:10px;
+            background:rgba(91,22,41,0.75);
+            color:white; border-radius:6px;
+            padding:5px 9px; font-size:11px; font-weight:600;
+            opacity:0; transition:var(--transition);
+            display:flex; align-items:center; gap:4px;
+        }
+        .exhibit-card:hover .reel-side .zoom-hint { opacity:1; }
 
         /* Reel placeholder (while no image) */
         .reel-placeholder {
@@ -403,10 +411,9 @@
         <!-- 01 María Barrientos -->
         <div class="exhibit-card" data-index="0">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-01.jpg" alt="Portada reel: María Barrientos" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(0)" role="button" tabindex="0" aria-label="Ampliar imagen de María Barrientos">
+                    <img src="img/reels/reel-01.jpg" alt="Portada reel: María Barrientos" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(0)" tabindex="0" role="button" aria-label="Ver cartela de María Barrientos">
                     <img src="img/cartelas/cartela-01.jpg" alt="Cartela: María Barrientos" loading="lazy">
@@ -422,10 +429,9 @@
         <!-- 02 Memphis Minnie -->
         <div class="exhibit-card" data-index="1">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-02.jpg" alt="Portada reel: Memphis Minnie" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(1)" role="button" tabindex="0" aria-label="Ampliar imagen de Memphis Minnie">
+                    <img src="img/reels/reel-02.jpg" alt="Portada reel: Memphis Minnie" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(1)" tabindex="0" role="button" aria-label="Ver cartela de Memphis Minnie">
                     <img src="img/cartelas/cartela-02.jpg" alt="Cartela: Memphis Minnie" loading="lazy">
@@ -441,10 +447,9 @@
         <!-- 03 Clara Haskil -->
         <div class="exhibit-card" data-index="2">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-03.jpg" alt="Portada reel: Clara Haskil" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(2)" role="button" tabindex="0" aria-label="Ampliar imagen de Clara Haskil">
+                    <img src="img/reels/reel-03.jpg" alt="Portada reel: Clara Haskil" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(2)" tabindex="0" role="button" aria-label="Ver cartela de Clara Haskil">
                     <img src="img/cartelas/cartela-03.jpg" alt="Cartela: Clara Haskil" loading="lazy">
@@ -460,10 +465,9 @@
         <!-- 04 Pastora Imperio -->
         <div class="exhibit-card" data-index="3">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-04.jpg" alt="Portada reel: Pastora Imperio" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(3)" role="button" tabindex="0" aria-label="Ampliar imagen de Pastora Imperio">
+                    <img src="img/reels/reel-04.jpg" alt="Portada reel: Pastora Imperio" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(3)" tabindex="0" role="button" aria-label="Ver cartela de Pastora Imperio">
                     <img src="img/cartelas/cartela-04.jpg" alt="Cartela: Pastora Imperio" loading="lazy">
@@ -479,10 +483,9 @@
         <!-- 05 Alma Rosé -->
         <div class="exhibit-card" data-index="4">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-05.jpg" alt="Portada reel: Alma Rosé" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(4)" role="button" tabindex="0" aria-label="Ampliar imagen de Alma Rosé">
+                    <img src="img/reels/reel-05.jpg" alt="Portada reel: Alma Rosé" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(4)" tabindex="0" role="button" aria-label="Ver cartela de Alma Rosé">
                     <img src="img/cartelas/cartela-05.jpg" alt="Cartela: Alma Rosé" loading="lazy">
@@ -498,10 +501,9 @@
         <!-- 06 Kirsten Flagstad -->
         <div class="exhibit-card" data-index="5">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-06.jpg" alt="Portada reel: Kirsten Flagstad" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(5)" role="button" tabindex="0" aria-label="Ampliar imagen de Kirsten Flagstad">
+                    <img src="img/reels/reel-06.jpg" alt="Portada reel: Kirsten Flagstad" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(5)" tabindex="0" role="button" aria-label="Ver cartela de Kirsten Flagstad">
                     <img src="img/cartelas/cartela-06.jpg" alt="Cartela: Kirsten Flagstad" loading="lazy">
@@ -517,10 +519,9 @@
         <!-- 07 Adelina Patti -->
         <div class="exhibit-card" data-index="6">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-07.jpg" alt="Portada reel: Adelina Patti" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(6)" role="button" tabindex="0" aria-label="Ampliar imagen de Adelina Patti">
+                    <img src="img/reels/reel-07.jpg" alt="Portada reel: Adelina Patti" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(6)" tabindex="0" role="button" aria-label="Ver cartela de Adelina Patti">
                     <img src="img/cartelas/cartela-07.jpg" alt="Cartela: Adelina Patti" loading="lazy">
@@ -536,10 +537,9 @@
         <!-- 08 Lily Pons -->
         <div class="exhibit-card" data-index="7">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-08.jpg" alt="Portada reel: Lily Pons" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(7)" role="button" tabindex="0" aria-label="Ampliar imagen de Lily Pons">
+                    <img src="img/reels/reel-08.jpg" alt="Portada reel: Lily Pons" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(7)" tabindex="0" role="button" aria-label="Ver cartela de Lily Pons">
                     <img src="img/cartelas/cartela-08.jpg" alt="Cartela: Lily Pons" loading="lazy">
@@ -555,10 +555,9 @@
         <!-- 09 Cécile Chaminade -->
         <div class="exhibit-card" data-index="8">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-09.jpg" alt="Portada reel: Cécile Chaminade" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(8)" role="button" tabindex="0" aria-label="Ampliar imagen de Cécile Chaminade">
+                    <img src="img/reels/reel-09.jpg" alt="Portada reel: Cécile Chaminade" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(8)" tabindex="0" role="button" aria-label="Ver cartela de Cécile Chaminade">
                     <img src="img/cartelas/cartela-09.jpg" alt="Cartela: Cécile Chaminade" loading="lazy">
@@ -574,10 +573,9 @@
         <!-- 10 Elvira de Hidalgo -->
         <div class="exhibit-card" data-index="9">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-10.jpg" alt="Portada reel: Elvira de Hidalgo" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(9)" role="button" tabindex="0" aria-label="Ampliar imagen de Elvira de Hidalgo">
+                    <img src="img/reels/reel-10.jpg" alt="Portada reel: Elvira de Hidalgo" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(9)" tabindex="0" role="button" aria-label="Ver cartela de Elvira de Hidalgo">
                     <img src="img/cartelas/cartela-10.jpg" alt="Cartela: Elvira de Hidalgo" loading="lazy">
@@ -593,10 +591,9 @@
         <!-- 11 Marian Anderson -->
         <div class="exhibit-card" data-index="10">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-11.jpg" alt="Portada reel: Marian Anderson" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(10)" role="button" tabindex="0" aria-label="Ampliar imagen de Marian Anderson">
+                    <img src="img/reels/reel-11.jpg" alt="Portada reel: Marian Anderson" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(10)" tabindex="0" role="button" aria-label="Ver cartela de Marian Anderson">
                     <img src="img/cartelas/cartela-11.jpg" alt="Cartela: Marian Anderson" loading="lazy">
@@ -612,10 +609,9 @@
         <!-- 12 La Argentinita -->
         <div class="exhibit-card" data-index="11">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-12.jpg" alt="Portada reel: La Argentinita" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(11)" role="button" tabindex="0" aria-label="Ampliar imagen de La Argentinita">
+                    <img src="img/reels/reel-12.jpg" alt="Portada reel: La Argentinita" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(11)" tabindex="0" role="button" aria-label="Ver cartela de La Argentinita">
                     <img src="img/cartelas/cartela-12.jpg" alt="Cartela: La Argentinita" loading="lazy">
@@ -631,10 +627,9 @@
         <!-- 13 Nadia Boulanger -->
         <div class="exhibit-card" data-index="12">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-13.jpg" alt="Portada reel: Nadia Boulanger" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(12)" role="button" tabindex="0" aria-label="Ampliar imagen de Nadia Boulanger">
+                    <img src="img/reels/reel-13.jpg" alt="Portada reel: Nadia Boulanger" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(12)" tabindex="0" role="button" aria-label="Ver cartela de Nadia Boulanger">
                     <img src="img/cartelas/cartela-13.jpg" alt="Cartela: Nadia Boulanger" loading="lazy">
@@ -650,10 +645,9 @@
         <!-- 14 Ofelia Nieto -->
         <div class="exhibit-card" data-index="13">
             <div class="exhibit-inner">
-                <div class="reel-side">
-                    <a href="https://www.instagram.com/mujeres.sinescrupulos/" target="_blank" rel="noopener">
-                        <img src="img/reels/reel-14.jpg" alt="Portada reel: Ofelia Nieto" loading="lazy">
-                    </a>
+                <div class="reel-side" onclick="openReelLb(13)" role="button" tabindex="0" aria-label="Ampliar imagen de Ofelia Nieto">
+                    <img src="img/reels/reel-14.jpg" alt="Portada reel: Ofelia Nieto" loading="lazy">
+                    <div class="zoom-hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Ampliar</div>
                 </div>
                 <div class="cartela-side" onclick="openLb(13)" tabindex="0" role="button" aria-label="Ver cartela de Ofelia Nieto">
                     <img src="img/cartelas/cartela-14.jpg" alt="Cartela: Ofelia Nieto" loading="lazy">
@@ -691,6 +685,22 @@
     </div>
 </section>
 
+<!-- Lightbox reels -->
+<div class="lightbox" id="lb-reels">
+    <div class="lb-backdrop" onclick="closeLb('lb-reels')"></div>
+    <button class="lb-close" onclick="closeLb('lb-reels')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <button class="lb-nav lb-prev" onclick="navLb('lb-reels',-1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="lb-nav lb-next" onclick="navLb('lb-reels',1)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <div class="lb-wrap">
+        <div class="lb-img-box"><img id="lb-reels-img" src="" alt=""></div>
+        <div class="lb-info">
+            <div class="lb-title" id="lb-reels-title"></div>
+            <div class="lb-subtitle" id="lb-reels-sub"></div>
+        </div>
+        <div class="lb-dots" id="lb-reels-dots"></div>
+    </div>
+</div>
+
 <!-- Lightbox cartelas -->
 <div class="lightbox" id="lb-cartelas">
     <div class="lb-backdrop" onclick="closeLb('lb-cartelas')"></div>
@@ -726,6 +736,22 @@
 </footer>
 
 <script>
+const reelsData = [
+    { src:'img/reels/reel-01.jpg', name:'María Barrientos', role:'Soprano' },
+    { src:'img/reels/reel-02.jpg', name:'Memphis Minnie', role:'Guitarrista y Compositora de Blues' },
+    { src:'img/reels/reel-03.jpg', name:'Clara Haskil', role:'Pianista' },
+    { src:'img/reels/reel-04.jpg', name:'Pastora Imperio', role:'Bailaora' },
+    { src:'img/reels/reel-05.jpg', name:'Alma Rosé', role:'Violinista' },
+    { src:'img/reels/reel-06.jpg', name:'Kirsten Flagstad', role:'Soprano' },
+    { src:'img/reels/reel-07.jpg', name:'Adelina Patti', role:'Soprano' },
+    { src:'img/reels/reel-08.jpg', name:'Lily Pons', role:'Soprano' },
+    { src:'img/reels/reel-09.jpg', name:'Cécile Chaminade', role:'Compositora y Pianista' },
+    { src:'img/reels/reel-10.jpg', name:'Elvira de Hidalgo', role:'Soprano y Pedagoga' },
+    { src:'img/reels/reel-11.jpg', name:'Marian Anderson', role:'Contralto' },
+    { src:'img/reels/reel-12.jpg', name:'La Argentinita', role:'Bailaora, Cantante y Empresaria' },
+    { src:'img/reels/reel-13.jpg', name:'Nadia Boulanger', role:'Compositora, Pianista, Directora y Pedagoga' },
+    { src:'img/reels/reel-14.jpg', name:'Ofelia Nieto', role:'Soprano' }
+];
 const cartelasData = [
     { src:'img/cartelas/cartela-01.jpg', name:'María Barrientos', role:'Soprano' },
     { src:'img/cartelas/cartela-02.jpg', name:'Memphis Minnie', role:'Guitarrista y Compositora de Blues' },
@@ -766,7 +792,7 @@ function buildDots(id, data, current) {
 }
 
 function updateLb(id) {
-    const data = id === 'lb-cartelas' ? cartelasData : photosData;
+    const data = id === 'lb-cartelas' ? cartelasData : id === 'lb-reels' ? reelsData : photosData;
     const cur = lbState[id];
     const img = document.getElementById(id + '-img');
     img.style.opacity = '0';
@@ -782,6 +808,12 @@ function updateLb(id) {
     buildDots(id, data, cur);
 }
 
+function openReelLb(index) {
+    lbState['lb-reels'] = index;
+    document.getElementById('lb-reels').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    updateLb('lb-reels');
+}
 function openLb(index) {
     lbState['lb-cartelas'] = index;
     document.getElementById('lb-cartelas').classList.add('active');
@@ -799,7 +831,7 @@ function closeLb(id) {
     document.body.style.overflow = '';
 }
 function navLb(id, dir) {
-    const data = id === 'lb-cartelas' ? cartelasData : photosData;
+    const data = id === 'lb-cartelas' ? cartelasData : id === 'lb-reels' ? reelsData : photosData;
     lbState[id] = (lbState[id] + dir + data.length) % data.length;
     updateLb(id);
 }
@@ -808,13 +840,14 @@ function goToLb(id, index) {
     updateLb(id);
 }
 
-['lb-cartelas-img','lb-photos-img'].forEach(id => {
+['lb-reels-img','lb-cartelas-img','lb-photos-img'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.transition = 'opacity 0.15s ease';
 });
 
 document.addEventListener('keydown', e => {
-    const activeId = document.getElementById('lb-cartelas').classList.contains('active') ? 'lb-cartelas'
+    const activeId = document.getElementById('lb-reels').classList.contains('active') ? 'lb-reels'
+        : document.getElementById('lb-cartelas').classList.contains('active') ? 'lb-cartelas'
         : document.getElementById('lb-photos').classList.contains('active') ? 'lb-photos' : null;
     if (!activeId) return;
     if (e.key === 'Escape') closeLb(activeId);
@@ -823,7 +856,7 @@ document.addEventListener('keydown', e => {
 });
 
 // Swipe
-['lb-cartelas','lb-photos'].forEach(id => {
+['lb-reels','lb-cartelas','lb-photos'].forEach(id => {
     let tx = 0;
     const el = document.getElementById(id);
     el.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive:true });
