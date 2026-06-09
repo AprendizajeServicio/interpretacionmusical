@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesgos de IA en Interpretación Musical | Interpretación Musical USAL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #7B1E3A;
+            --color-primary-dark: #5A1629;
+            --color-secondary: #6B4C7A;
+            --color-cream: #FAF8F5;
+            --color-warm-white: #FEFDFB;
+            --color-text: #2D2A26;
+            --color-text-light: #5A5652;
+            --color-border: #E8E4DE;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-sm: 0 2px 8px rgba(123,30,58,0.06);
+            --shadow-md: 0 4px 20px rgba(123,30,58,0.10);
+            --shadow-lg: 0 12px 48px rgba(123,30,58,0.18);
+            --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: var(--font-body);
+            font-size:17px; line-height:1.7;
+            color:var(--color-text);
+            background:var(--color-warm-white);
+            -webkit-font-smoothing:antialiased;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            padding: 11px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .back-link {
+            display:inline-flex; align-items:center; gap:8px;
+            color:rgba(255,255,255,0.9); text-decoration:none;
+            font-size:14px; font-weight:500; transition:var(--transition);
+        }
+        .back-link:hover { color:#fff; gap:12px; }
+        .top-bar-label {
+            color:rgba(255,255,255,0.7);
+            font-size:13px; font-weight:500;
+        }
+
+        /* Page header */
+        .page-header {
+            background: linear-gradient(165deg, var(--color-cream) 0%, var(--color-warm-white) 55%, #F2EBF0 100%);
+            padding: 72px 40px 60px;
+            text-align: center;
+            position: relative; overflow: hidden;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .page-header::before {
+            content:'';
+            position:absolute; top:-180px; right:-180px;
+            width:500px; height:500px;
+            background:radial-gradient(circle, rgba(107,76,122,0.07) 0%, transparent 70%);
+            border-radius:50%;
+        }
+        .header-tag {
+            display:inline-block; font-size:12px; font-weight:600;
+            text-transform:uppercase; letter-spacing:2px;
+            color:var(--color-secondary); margin-bottom:16px;
+        }
+        .page-header h1 {
+            font-family:var(--font-display);
+            font-size:clamp(32px,4.5vw,54px);
+            font-weight:700; color:var(--color-primary);
+            line-height:1.15; margin-bottom:18px;
+        }
+        .page-header h1 em { color:var(--color-secondary); font-style:italic; }
+        .page-header .lead {
+            color:var(--color-text-light); font-size:18px;
+            max-width:680px; margin:0 auto 28px; line-height:1.8;
+        }
+        .header-stats {
+            display:inline-flex; align-items:center; gap:24px;
+            background:white; border:1px solid var(--color-border);
+            border-radius:50px; padding:10px 28px;
+            font-size:14px; font-weight:600; color:var(--color-text-light);
+            box-shadow:var(--shadow-sm);
+        }
+        .stat-dot {
+            width:6px; height:6px; border-radius:50%;
+            background:var(--color-secondary); display:inline-block;
+        }
+
+        /* Intro académica */
+        .intro-section {
+            max-width: 860px;
+            margin: 64px auto;
+            padding: 0 40px;
+        }
+        .intro-section h2 {
+            font-family: var(--font-display);
+            font-size: 26px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+        .intro-section p {
+            color: var(--color-text-light);
+            font-size: 17px;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+        .intro-section p strong { color: var(--color-text); }
+        .callout {
+            background: linear-gradient(135deg, rgba(123,30,58,0.05) 0%, rgba(107,76,122,0.05) 100%);
+            border-left: 4px solid var(--color-secondary);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 32px 0;
+            font-size: 16px;
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+        .callout em {
+            color: var(--color-primary);
+            font-style: italic;
+        }
+
+        /* Gallery grid */
+        .gallery-section {
+            padding: 16px 40px 80px;
+            background: var(--color-cream);
+        }
+        .gallery-header {
+            max-width: 1100px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+        .gallery-header h2 {
+            font-family: var(--font-display);
+            font-size: 34px;
+            color: var(--color-primary);
+            margin-bottom: 14px;
+        }
+        .gallery-header p {
+            font-size: 17px;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .gallery-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 36px;
+        }
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .gallery-img-wrap {
+            position: relative;
+            overflow: hidden;
+            background: #f5f0f2;
+        }
+        .gallery-img-wrap img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover .gallery-img-wrap img {
+            transform: scale(1.03);
+        }
+        .gallery-zoom-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(123,30,58,0.85);
+            color: white;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+        }
+        .gallery-item:hover .gallery-zoom-hint { opacity: 1; }
+        .gallery-caption {
+            padding: 24px 28px 28px;
+        }
+        .gallery-caption .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+        .gallery-caption h3 {
+            font-family: var(--font-display);
+            font-size: 21px;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .gallery-caption p {
+            font-size: 15px;
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(30, 15, 22, 0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            backdrop-filter: blur(6px);
+        }
+        .lightbox.active { display: flex; }
+        .lightbox-inner {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-inner img {
+            max-width: 90vw;
+            max-height: 86vh;
+            border-radius: 16px;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 20px; right: 24px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+        .lightbox-caption {
+            position: fixed;
+            bottom: 28px; left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        /* Contexto académico */
+        .context-section {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 64px 40px 80px;
+        }
+        .context-section h2 {
+            font-family: var(--font-display);
+            font-size: 26px;
+            color: var(--color-primary);
+            margin-bottom: 24px;
+        }
+        .context-section p {
+            color: var(--color-text-light);
+            font-size: 17px;
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+        .context-section p strong { color: var(--color-text); }
+        .refs {
+            border-top: 1px solid var(--color-border);
+            margin-top: 40px;
+            padding-top: 32px;
+        }
+        .refs h3 {
+            font-family: var(--font-display);
+            font-size: 19px;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+        .refs ul {
+            list-style: none;
+            padding: 0;
+        }
+        .refs li {
+            font-size: 15px;
+            color: var(--color-text-light);
+            padding: 8px 0 8px 20px;
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+            line-height: 1.6;
+        }
+        .refs li:last-child { border-bottom: none; }
+        .refs li::before {
+            content: '';
+            position: absolute; left: 0; top: 16px;
+            width: 7px; height: 7px;
+            background: var(--color-secondary);
+            border-radius: 50%; opacity: 0.5;
+        }
+
+        /* Footer mínimo */
+        .footer-mini {
+            background: var(--color-text);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 28px 40px;
+            font-size: 14px;
+        }
+        .footer-mini a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+        }
+        .footer-mini a:hover { color: white; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar { padding: 10px 20px; }
+            .page-header { padding: 52px 24px 44px; }
+            .intro-section, .context-section { padding: 48px 24px; }
+            .gallery-section { padding: 16px 24px 60px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .header-stats { flex-direction: column; gap: 8px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top bar -->
+    <div class="top-bar">
+        <a href="https://aprendizajeservicio.github.io/interpretacionmusical/" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Volver al proyecto
+        </a>
+        <span class="top-bar-label">Antropología y Folklore · ApS 25-26/33</span>
+    </div>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <span class="header-tag">Antropología y Folklore</span>
+        <h1>Sesgos de IA en la<br><em>Interpretación Musical</em></h1>
+        <p class="lead">
+            Infografías elaboradas en el aula sobre los sesgos de género y culturales
+            detectados en herramientas de inteligencia artificial aplicadas a la música
+            y a las músicas populares.
+        </p>
+        <div class="header-stats">
+            <span><span class="stat-dot"></span> 3 infografías</span>
+            <span><span class="stat-dot"></span> Curso 2025-2026</span>
+            <span><span class="stat-dot"></span> Grado en Musicología · USAL</span>
+        </div>
+    </div>
+
+    <!-- Introducción académica -->
+    <div class="intro-section">
+        <h2>Contexto y propósito</h2>
+        <p>
+            En el marco del proyecto de Aprendizaje-Servicio <strong>"Interpretación Musical y Prevención de Violencia de Género"</strong>,
+            el alumnado de la asignatura <em>Antropología y Folklore</em> (Grado en Musicología, Universidad de Salamanca) ha
+            realizado un análisis crítico de los sesgos presentes en sistemas de inteligencia artificial generativa cuando
+            se les solicita producir contenido relacionado con la interpretación musical y las músicas populares.
+        </p>
+        <p>
+            Los sistemas de IA entrenados sobre datos masivos de internet reproducen —y en ocasiones amplifican—
+            las asimetrías de género y los estereotipos culturales presentes en los discursos musicales históricos.
+            Identificar estos patrones constituye un primer paso imprescindible para una relación crítica
+            con estas tecnologías en contextos educativos y de investigación musicológica.
+        </p>
+        <div class="callout">
+            <em>"Los modelos de lenguaje e imagen aprenden de lo que existe: si la documentación histórica
+            sobre músicas populares está sesgada hacia lo masculino y hacia determinadas culturas dominantes,
+            los sistemas de IA reproducirán esa misma jerarquía."</em>
+        </div>
+        <p>
+            Las infografías que se presentan a continuación son el resultado de <strong>ejercicios prácticos de aula</strong>
+            en los que el alumnado consultó diferentes herramientas de IA generativa (texto e imagen) con prompts
+            relacionados con géneros musicales populares —flamenco, jota, joropo, músicas familiares—,
+            y documentó y analizó las respuestas obtenidas desde una perspectiva de género y de diversidad cultural.
+        </p>
+    </div>
+
+    <!-- Galería -->
+    <div class="gallery-section">
+        <div class="gallery-header">
+            <h2>Infografías</h2>
+            <p>Haz clic en cada imagen para ampliarla.</p>
+        </div>
+        <div class="gallery-grid">
+
+            <!-- Infografía 1: Familia -->
+            <div class="gallery-item" onclick="openLightbox('img/sesgos_familia.jpg', 'La familia en la IA: roles de género y música doméstica')">
+                <div class="gallery-img-wrap">
+                    <img src="img/sesgos_familia.jpg" alt="Infografía sobre sesgos de IA en representaciones de la familia y música">
+                    <span class="gallery-zoom-hint">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Ampliar
+                    </span>
+                </div>
+                <div class="gallery-caption">
+                    <span class="tag">Sesgo de género · Música doméstica</span>
+                    <h3>La familia en la IA</h3>
+                    <p>Análisis de cómo los sistemas de IA asocian la práctica musical doméstica con roles de género diferenciados: la mujer como transmisora informal y el hombre como músico profesionalizado.</p>
+                </div>
+            </div>
+
+            <!-- Infografía 2: Flamenco -->
+            <div class="gallery-item" onclick="openLightbox('img/sesgos_flamenco.jpg', 'Flamenco e IA: estereotipos culturales y de género')">
+                <div class="gallery-img-wrap">
+                    <img src="img/sesgos_flamenco.jpg" alt="Infografía sobre sesgos de IA en la representación del flamenco">
+                    <span class="gallery-zoom-hint">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Ampliar
+                    </span>
+                </div>
+                <div class="gallery-caption">
+                    <span class="tag">Sesgo cultural · Flamenco</span>
+                    <h3>Flamenco e IA</h3>
+                    <p>Exploración de los estereotipos visuales y textuales que la IA reproduce al representar el flamenco: hipersexualización de la bailaora, invisibilización de las tocaoras y cantaoras.</p>
+                </div>
+            </div>
+
+            <!-- Infografía 3: Jota y Joropo -->
+            <div class="gallery-item" onclick="openLightbox('img/sesgos_jota_joropo.png', 'Jota y joropo: músicas populares iberoamericanas ante la IA')">
+                <div class="gallery-img-wrap">
+                    <img src="img/sesgos_jota_joropo.png" alt="Infografía sobre sesgos de IA en la jota española y el joropo venezolano-colombiano">
+                    <span class="gallery-zoom-hint">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Ampliar
+                    </span>
+                </div>
+                <div class="gallery-caption">
+                    <span class="tag">Sesgo cultural · Músicas iberoamericanas</span>
+                    <h3>Jota y joropo</h3>
+                    <p>Análisis comparativo de cómo la IA representa dos géneros de música popular iberoamericana —la jota aragonesa y el joropo venezolano-colombiano— y los patrones de invisibilización de intérpretes femeninas.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Contexto académico -->
+    <div class="context-section">
+        <h2>Marco teórico: IA, género y músicas populares</h2>
+        <p>
+            Los grandes modelos de lenguaje (LLM) y los sistemas de generación de imágenes han sido entrenados
+            con corpus masivos extraídos de internet, los cuales reflejan décadas de discurso musical
+            androcéntrico. En el ámbito de las músicas populares, esta tendencia se manifiesta de manera
+            especialmente marcada: los géneros de raíz folclórica e iberoamericana aparecen reducidos
+            a sus figuras masculinas canónicas, mientras que las mujeres quedan relegadas a roles
+            ornamentales o domésticos.
+        </p>
+        <p>
+            El concepto de <strong>sesgo algorítmico</strong> hace referencia a la tendencia de los sistemas de IA
+            a reproducir y reforzar desigualdades preexistentes en los datos de entrenamiento.
+            En el contexto musical, estos sesgos afectan a múltiples dimensiones: la representación
+            de género en intérpretes, la jerarquización cultural entre géneros musicales, y la
+            asociación de determinados instrumentos o registros vocales con categorías de género.
+        </p>
+        <p>
+            El trabajo desarrollado en esta asignatura parte de la premisa de que <strong>una formación
+            musicológica crítica en el siglo XXI</strong> debe incluir la capacidad de identificar, nombrar
+            y cuestionar los sesgos que los sistemas de IA trasladan al conocimiento musical.
+            Solo desde ese reconocimiento puede plantearse un uso pedagógicamente responsable
+            de estas herramientas.
+        </p>
+
+        <div class="refs">
+            <h3>Referencias de apoyo</h3>
+            <ul>
+                <li>Bain, M., Huh, J., Han, T., &amp; Zisserman, A. (2023). <em>WHISPER: Robust speech recognition via large-scale weak supervision.</em> Proceedings of ICML.</li>
+                <li>Blodgett, S. L., et al. (2020). Language (technology) is power: A critical survey of "bias" in NLP. <em>Proceedings of ACL 2020</em>, 5454–5476.</li>
+                <li>Buolamwini, J., &amp; Gebru, T. (2018). Gender shades: Intersectional accuracy disparities in commercial gender classification. <em>Proceedings of FAccT 2018</em>, 81:1–81:15.</li>
+                <li>Epstein, Z., et al. (2023). Art and the science of generative AI. <em>Science</em>, 380(6650), 1110–1111.</li>
+                <li>Green, L. (1997). <em>Music, Gender, Education.</em> Cambridge University Press.</li>
+                <li>Pena Castro, M. J. (coord.) (2025). <em>Proyecto ApS 25-26/33: Interpretación Musical y Prevención de Violencia de Género.</em> Universidad de Salamanca.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-inner">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-mini">
+        <p>
+            <a href="https://aprendizajeservicio.github.io/interpretacionmusical/">Interpretación Musical y Prevención de Violencia de Género</a>
+            &nbsp;·&nbsp; Proyecto ApS 25-26/33 &nbsp;·&nbsp; Universidad de Salamanca &copy; 2026
+        </p>
+    </footer>
+
+    <script>
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').textContent = caption;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox(e) {
+            if (!e || e.target !== document.getElementById('lightbox-img')) {
+                document.getElementById('lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.gallery-item, .callout').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
