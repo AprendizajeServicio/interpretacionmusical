@@ -625,6 +625,42 @@
             .hero-buttons { flex-direction: column; }
         }
 
+        /* === Jornadas grid === */
+        .jornadas-grid {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-bottom: 8px;
+        }
+        .jornadas-grid img,
+        .jornadas-grid video {
+            height: 500px;
+            width: auto;
+            flex-shrink: 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        .jornadas-grid a {
+            display: block;
+            height: 500px;
+            flex-shrink: 0;
+        }
+        .jornadas-grid a img {
+            height: 100%;
+            width: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        @media (max-width: 768px) {
+            .jornadas-grid img,
+            .jornadas-grid video,
+            .jornadas-grid a { height: 260px; }
+        }
+
         /* === Accessibility === */
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -862,13 +898,12 @@
                 en el marco del curso académico 2025-2026.
             </p>
         </div>
-        <div style="display: flex; gap: 24px; justify-content: center; align-items: flex-start; flex-wrap: wrap; max-width: 1280px; margin: 0 auto;">
-            <img src="img/cartel_proyecto.jpeg" alt="Proyecto Aprendizaje y Servicio 25-26/33" style="height: 500px; width: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); max-width: 100%;">
-            <a href="img/cartel_21_abril.jpeg" target="_blank" rel="noopener" style="display: block; height: 500px; flex-shrink: 0;">
-                <img src="img/cartel_21_abril.jpeg" alt="Programa 21 de abril de 2026" style="height: 100%; width: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); cursor: zoom-in; transition: transform 0.2s ease; display: block;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+        <div class="jornadas-grid">
+            <img src="img/cartel_proyecto.jpeg" alt="Proyecto Aprendizaje y Servicio 25-26/33">
+            <a href="img/cartel_21_abril.jpeg" target="_blank" rel="noopener">
+                <img src="img/cartel_21_abril.jpeg" alt="Programa 21 de abril de 2026" style="cursor: zoom-in; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             </a>
-            <video controls playsinline preload="metadata"
-                style="height: 500px; width: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); background: #000; max-width: 100%;">
+            <video controls playsinline preload="metadata" style="background: #000;">
                 <source src="img/video_21_abril.mp4" type="video/mp4">
             </video>
         </div>
