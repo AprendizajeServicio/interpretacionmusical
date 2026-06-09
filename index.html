@@ -628,7 +628,7 @@
         /* === Jornadas grid === */
         .jornadas-grid {
             display: flex;
-            gap: 24px;
+            gap: 32px;
             justify-content: center;
             align-items: flex-start;
             flex-wrap: nowrap;
@@ -637,28 +637,49 @@
             margin: 0 auto;
             padding-bottom: 8px;
         }
-        .jornadas-grid img,
-        .jornadas-grid video {
-            height: 500px;
-            width: auto;
+        .jornada-item {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
             flex-shrink: 0;
+        }
+        .jornada-item .jornada-media {
+            display: flex;
+            gap: 12px;
+            height: 500px;
+        }
+        .jornada-item .jornada-media img,
+        .jornada-item .jornada-media video {
+            height: 100%;
+            width: auto;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.12);
         }
-        .jornadas-grid a {
+        .jornada-item .jornada-media a {
             display: block;
-            height: 500px;
-            flex-shrink: 0;
+            height: 100%;
         }
-        .jornadas-grid a img {
+        .jornada-item .jornada-media a img {
             height: 100%;
             width: auto;
+            border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.12);
         }
+        .jornada-caption {
+            font-size: 14px;
+            color: var(--color-text-light);
+            line-height: 1.6;
+            text-align: center;
+            max-width: 680px;
+        }
+        .jornada-caption strong {
+            display: block;
+            color: var(--color-text);
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
         @media (max-width: 768px) {
-            .jornadas-grid img,
-            .jornadas-grid video,
-            .jornadas-grid a { height: 260px; }
+            .jornada-item .jornada-media { height: 240px; }
         }
 
         /* === Accessibility === */
@@ -899,13 +920,31 @@
             </p>
         </div>
         <div class="jornadas-grid">
-            <img src="img/cartel_proyecto.jpeg" alt="Proyecto Aprendizaje y Servicio 25-26/33">
-            <a href="img/cartel_21_abril.jpeg" target="_blank" rel="noopener">
-                <img src="img/cartel_21_abril.jpeg" alt="Programa 21 de abril de 2026" style="cursor: zoom-in; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-            </a>
-            <video controls playsinline preload="metadata" style="background: #000;">
-                <source src="img/video_21_abril.mp4" type="video/mp4">
-            </video>
+            <!-- Jornada 21 de abril -->
+            <div class="jornada-item">
+                <div class="jornada-media">
+                    <img src="img/cartel_proyecto.jpeg" alt="Proyecto Aprendizaje y Servicio 25-26/33">
+                    <a href="img/cartel_21_abril.jpeg" target="_blank" rel="noopener">
+                        <img src="img/cartel_21_abril.jpeg" alt="Programa 21 de abril de 2026" style="cursor: zoom-in; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    </a>
+                </div>
+                <p class="jornada-caption">
+                    <strong>Jornada de presentación del trabajo realizado en las distintas asignaturas y mesa redonda</strong>
+                    21 de abril de 2026 &middot; Salón de Grados, Facultad de Geografía e Historia, USAL
+                </p>
+            </div>
+            <!-- Conferencia-Concierto COSCYL -->
+            <div class="jornada-item">
+                <div class="jornada-media">
+                    <video controls playsinline preload="metadata" style="background: #000;">
+                        <source src="img/video_21_abril.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="jornada-caption">
+                    <strong>Conferencia-Concierto en COSCYL</strong>
+                    19 de mayo de 2026 &middot; Salón de Actos, Conservatorio Superior de Castilla y León, Salamanca
+                </p>
+            </div>
         </div>
     </section>
 
